@@ -26,7 +26,9 @@ int  ft_heredoc(int fd, char *limiter, int pip)
 }
 
 void pipex_heredoc(int ac, char **av, char **envp)
-//delay loshara code
+/*
+	delay loshara code
+*/
 {
 	int		i;
 	int		status;

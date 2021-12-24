@@ -1,6 +1,8 @@
 #include "./../includes/pipex.h"
 		
-//???
+/*
+	???
+*/
 void	executer(char *cmd, char **envp)
 {
 	const char	*path;
