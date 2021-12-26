@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdeann <rdeann@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/25 18:00:25 by rdeann            #+#    #+#             */
+/*   Updated: 2021/12/25 18:00:25 by rdeann           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../includes/pipex.h"
 
-int  ft_heredoc(int fd, char *limiter, int pip)
+int	ft_heredoc(int fd, char *limiter, int pip)
 {
 	int		i;
-    int		ret;
-    char	*line;
+	int		ret;
+	char	*line;
 
-    while (true)
-    {
+	while (true)
+	{
 		i = 0;
 		while (i++ < pip)
 			ft_putstr_fd(STDOUT_FILENO, "pipe ");
@@ -21,11 +33,11 @@ int  ft_heredoc(int fd, char *limiter, int pip)
 		ft_strdel(&line);
 		if (ret == 0)
 			break ;
-    }
+	}
 	return (ret);
 }
 
-void pipex_heredoc(int ac, char **av, char **envp)
+void	pipex_heredoc(int ac, char **av, char **envp)
 /*
 	delay loshara code
 */
@@ -56,7 +68,7 @@ void pipex_heredoc(int ac, char **av, char **envp)
 		;
 }
 
-void    pipex_bonus(int argc, char **argv, char **envp)
+void	pipex_bonus(int argc, char **argv, char **envp)
 {
 	int		i;
 	int		status;

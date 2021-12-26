@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   piper.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdeann <rdeann@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/25 18:00:28 by rdeann            #+#    #+#             */
+/*   Updated: 2021/12/25 18:00:28 by rdeann           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../includes/pipex.h"
 
 int	piper_heredoc(int in, int out, char *limiter, int pip)
@@ -25,7 +37,7 @@ int	piper_heredoc(int in, int out, char *limiter, int pip)
 	return (in);
 }
 
-void    piper(int in, int out, char *cmd, char **envp)
+void	piper(int in, int out, char *cmd, char **envp)
 {
 	pid_t	pid;
 

@@ -1,6 +1,7 @@
 NAME 	        = libft_gnl.a
 SRC_PATH 		= libft
 GNL_PATH 		= gnl
+INCLUDES		= includes
 
 SRCS			=	$(SRC_PATH)/ft_isspace.c \
             		$(SRC_PATH)/ft_isdigit.c \
@@ -27,7 +28,6 @@ SRCS			=	$(SRC_PATH)/ft_isspace.c \
 					$(SRC_PATH)/ft_strrchr.c \
 					$(SRC_PATH)/ft_strcmp.c \
 					$(SRC_PATH)/ft_strncmp.c \
-					$(SRC_PATH)/ft_atoi.c \
 					$(SRC_PATH)/ft_putchar_fd.c \
 					$(SRC_PATH)/ft_putnbr_fd.c \
 					$(SRC_PATH)/ft_putstr_fd.c \
@@ -37,22 +37,27 @@ SRCS			=	$(SRC_PATH)/ft_isspace.c \
 
 OBJS	= $(SRCS:.c=.o)
 
-HEADER 			= -I../$(SRC_PATH)/libft.h -I../$(SRC_PATH)/get_next_line.h
-LIBC 			= ar rc
-LIBR 			= ranlib
+HEADER 			= -I../$(INCLUDES)/libft.h -I../$(INCLUDES)/get_next_line.h
 
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
+OPTIM_FLAGS = -O2
+
+LIBS = $(INCLUDES)/libft.h $(INCLUDES)/get_next_line.h
+
+AR = ar rcs
+RM = rm -f
 
 .PHONY: 	all clean fclean re .c.o
 
-.c.o:		
-			${CC} ${CFLAGS} $(HEADER) -c $< -o ${<:.c=.o}
+all: $(NAME)
 
-${NAME}:	${OBJS}
-			${LIBC} ${NAME} ${OBJS}
-			${LIBR} ${NAME}
+$(NAME) : $(OBJS) $(LIBS)
+	$(AR) $(NAME) $^
+
+.c.o:		
+			${CC} ${CFLAGS} ${OPTIM_FLAGS} $(HEADER) -c $< -o ${<:.c=.o}
 
 all:		${NAME}
 

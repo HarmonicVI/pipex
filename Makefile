@@ -23,24 +23,22 @@ OBJS			= $(SRCS:.c=.o)
 CC				= gcc
 HEADER 			= -I ../includes/pipex.h
 CFLAGS			= -Wall -Wextra -Werror
-DFLAGS 			= -g -fsanitize=address
 RM				= rm -f
 
-.PHONY: 		all clean fclean re bonus norm
+.PHONY: 		all clean fclean re
 
-%.o:			%.c $(HEADER) Makefile 
+%.o:			%.c $(HEADER) Makefile
 				${CC} $(CFLAGS) -c -I $(HEADER) $< -o $(<:.c=.o) 
 			
 ${NAME}:		${CMN_OBJS} ${OBJS} 
-				${RM} ${BONUS_OBJS}
-				${MAKE} -C ${LIBFT_PATH}
+				${LIBFT_MAKE}
 				${CC} ${CFLAGS} ${CMN_OBJS} ${OBJS} $(HEADER) ${LIBFT} -o ${NAME}
 
 all:			${NAME}
 
 clean:		
 				$(LIBFT_MAKE) clean
-				${RM} ${CMN_OBJS} ${OBJS} $(BONUS_OBJS)
+				${RM} ${CMN_OBJS} ${OBJS} $(BONUS_OBJS) $(LIBFT)
 
 fclean:			clean
 				$(LIBFT_MAKE) fclean
